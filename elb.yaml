@@ -194,8 +194,8 @@ node_templates:
         target: sub1
       - type: cloudify.relationships.depends_on
         target: sub2
-      - type: cloudify.relationships.depends_on
-        target: sub3
+#       - type: cloudify.relationships.depends_on
+#         target: sub3
     interfaces:
       cloudify.interfaces.lifecycle:
         start:
