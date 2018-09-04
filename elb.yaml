@@ -150,6 +150,12 @@ node_templates:
     relationships:
       - type: cloudify.relationships.aws.elb.instance.connected_to
         target: classic_elb
+        source_interfaces:
+          cloudify.interfaces.relationship_lifecycle:
+            establish:
+              implementation: awssdk.cloudify_awssdk.elb.resources.classic.load_balancer.assoc
+              inputs:
+                force_operation: true
 
   inst2:
     type: cloudify.nodes.aws.ec2.Instances
@@ -162,6 +168,13 @@ node_templates:
     relationships:
       - type: cloudify.relationships.aws.elb.instance.connected_to
         target: classic_elb
+        source_interfaces:
+          cloudify.interfaces.relationship_lifecycle:
+            establish:
+              implementation: awssdk.cloudify_awssdk.elb.resources.classic.load_balancer.assoc
+              inputs:
+                force_operation: true
+        
 
 #   inst3:
 #     type: cloudify.nodes.aws.ec2.Instances
