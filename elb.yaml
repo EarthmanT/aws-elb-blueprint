@@ -150,12 +150,6 @@ node_templates:
     relationships:
       - type: cloudify.relationships.aws.elb.instance.connected_to
         target: classic_elb
-        source_interfaces:
-          cloudify.interfaces.relationship_lifecycle:
-            establish:
-              implementation: awssdk.cloudify_awssdk.elb.resources.classic.load_balancer.assoc
-              inputs:
-                force_operation: true
 
   inst2:
     type: cloudify.nodes.aws.ec2.Instances
@@ -164,16 +158,10 @@ node_templates:
         install_method: none
       client_config: *client_config
       use_external_resource: true
-      resource_id: { get_input: instance1 } 
+      resource_id: { get_input: instance2 } 
     relationships:
       - type: cloudify.relationships.aws.elb.instance.connected_to
         target: classic_elb
-        source_interfaces:
-          cloudify.interfaces.relationship_lifecycle:
-            establish:
-              implementation: awssdk.cloudify_awssdk.elb.resources.classic.load_balancer.assoc
-              inputs:
-                force_operation: true
         
 
 #   inst3:
